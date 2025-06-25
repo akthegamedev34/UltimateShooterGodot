@@ -1,0 +1,13 @@
+[gd_resource type="ConfigFile" load_steps=2 format=3]
+
+[application]
+
+config/name="Ultimate Shooter"
+config/description="Multiplayer shooting game built with Godot"
+
+run/main_scene="scenes/Lobby.tscn"
+config/icon=""
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
