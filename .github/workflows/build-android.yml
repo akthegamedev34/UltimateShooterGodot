@@ -7,15 +7,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  export-android:
+    name: Export Android
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Set up Godot Multi Builder
-        uses: croconut/godot-multi-builder@v1
+      - name: Export Android APK
+        uses: firebelley/godot-export@v5
         with:
-          names: "Android"
-          path-to-game: "."
-          debug-mode: "true"
+          godot-version: 4.2.1
+          export-preset: "Android"
+          use-debug: true
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apk
+          path: build/android/*.apk
