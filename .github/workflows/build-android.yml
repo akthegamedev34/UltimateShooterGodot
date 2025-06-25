@@ -1,0 +1,21 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Godot Multi Builder
+        uses: croconut/godot-multi-builder@v1
+        with:
+          names: "Android"
+          path-to-game: "."
+          debug-mode: "true"
