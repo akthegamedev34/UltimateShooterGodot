@@ -2,26 +2,24 @@ name: Build Android APK
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   export-android:
-    name: Export Android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: Export Android APK
-        uses: firebelley/godot-export@v5
+        uses: firebelley/godot-export@v4
         with:
           godot-version: 4.2.1
           export-preset: "Android"
           use-debug: true
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-apk
           path: build/android/*.apk
